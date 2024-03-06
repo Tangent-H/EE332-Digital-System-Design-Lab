@@ -1,0 +1,21 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Tue Mar  5 21:35:24 2024
+# Process ID: 29848
+# Current directory: D:/MyProjects/FPGA/Lab2/full_addr/full_addr.sim/sim_1/impl/func/xsim
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent28608 D:\MyProjects\FPGA\Lab2\full_addr\full_addr.sim\sim_1\impl\func\xsim\tb_full_addr_func_impl.wdb
+# Log file: D:/MyProjects/FPGA/Lab2/full_addr/full_addr.sim/sim_1/impl/func/xsim/vivado.log
+# Journal file: D:/MyProjects/FPGA/Lab2/full_addr/full_addr.sim/sim_1/impl/func/xsim\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_wave_database {D:\MyProjects\FPGA\Lab2\full_addr\full_addr.sim\sim_1\impl\func\xsim\tb_full_addr_func_impl.wdb}
+close_sim
+close_project
+open_project D:/MyProjects/FPGA/Lab2/full_addr/full_addr.xpr
+update_compile_order -fileset sources_1
+load_feature simulator
+open_wave_database {D:/MyProjects/FPGA/Lab2/sim_process/sim_process.sim/sim_1/behav/xsim/tb_proc_behav.wdb}
+launch_simulation
+close_sim

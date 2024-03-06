@@ -1,0 +1,78 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Sun Feb 25 14:32:34 2024
+# Process ID: 28072
+# Current directory: D:/Tangent/SUSTech/大三下/课程资料/DSD/Lab/Lab1/Tutorial
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent3116 D:\Tangent\SUSTech\大三下\课程资料\DSD\Lab\Lab1\Tutorial\Tutorial.xpr
+# Log file: D:/Tangent/SUSTech/大三下/课程资料/DSD/Lab/Lab1/Tutorial/vivado.log
+# Journal file: D:/Tangent/SUSTech/大三下/课程资料/DSD/Lab/Lab1/Tutorial\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project D:/Tangent/SUSTech/大三下/课程资料/DSD/Lab/Lab1/Tutorial/Tutorial.xpr
+update_compile_order -fileset sources_1
+launch_simulation
+open_wave_config D:/Tangent/SUSTech/大三下/课程资料/DSD/Lab/Lab1/Tutorial/counter_tbw_behav.wcfg
+source counter_tbw.tcl
+open_run synth_1 -name synth_1
+open_run impl_1
+launch_simulation -mode post-implementation -type functional
+open_wave_config D:/Tangent/SUSTech/大三下/课程资料/DSD/Lab/Lab1/Tutorial/counter_tbw_behav.wcfg
+source counter_tbw.tcl
+launch_simulation -mode post-implementation -type timing
+open_wave_config D:/Tangent/SUSTech/大三下/课程资料/DSD/Lab/Lab1/Tutorial/counter_tbw_behav.wcfg
+source counter_tbw.tcl
+current_sim simulation_1
+launch_simulation -mode post-synthesis -type functional
+open_wave_config D:/Tangent/SUSTech/大三下/课程资料/DSD/Lab/Lab1/Tutorial/counter_tbw_behav.wcfg
+source counter_tbw.tcl
+current_sim simulation_3
+close_sim
+launch_simulation -mode post-implementation -type timing
+current_sim simulation_2
+launch_simulation -mode post-synthesis -type timing
+open_wave_config D:/Tangent/SUSTech/大三下/课程资料/DSD/Lab/Lab1/Tutorial/counter_tbw_behav.wcfg
+source counter_tbw.tcl
+current_sim simulation_2
+launch_simulation -mode post-implementation -type timing
+relaunch_sim
+current_sim simulation_5
+close_sim
+current_sim simulation_2
+close_sim
+current_sim simulation_4
+close_sim
+close_sim
+launch_simulation
+open_wave_config D:/Tangent/SUSTech/大三下/课程资料/DSD/Lab/Lab1/Tutorial/counter_tbw_behav.wcfg
+source counter_tbw.tcl
+launch_simulation -mode post-synthesis -type functional
+open_wave_config D:/Tangent/SUSTech/大三下/课程资料/DSD/Lab/Lab1/Tutorial/counter_tbw_behav.wcfg
+source counter_tbw.tcl
+launch_simulation -mode post-synthesis -type timing
+open_wave_config D:/Tangent/SUSTech/大三下/课程资料/DSD/Lab/Lab1/Tutorial/counter_tbw_behav.wcfg
+source counter_tbw.tcl
+launch_simulation -mode post-implementation -type functional
+open_wave_config D:/Tangent/SUSTech/大三下/课程资料/DSD/Lab/Lab1/Tutorial/counter_tbw_behav.wcfg
+source counter_tbw.tcl
+launch_simulation -mode post-implementation -type timing
+open_wave_config D:/Tangent/SUSTech/大三下/课程资料/DSD/Lab/Lab1/Tutorial/counter_tbw_behav.wcfg
+source counter_tbw.tcl
+launch_runs impl_1 -to_step write_bitstream -jobs 10
+wait_on_run impl_1
+open_hw_manager
+connect_hw_server -allow_non_jtag
+open_hw_target
+refresh_hw_device [lindex [get_hw_devices xc7a100t_0] 0]
+reset_run impl_1 -prev_step 
+launch_runs impl_1 -to_step write_bitstream -jobs 20
+wait_on_run impl_1
+close_sim
+current_sim simulation_9
+close_sim
+current_sim simulation_8
+close_sim
+current_sim simulation_7
+close_sim
+close_sim

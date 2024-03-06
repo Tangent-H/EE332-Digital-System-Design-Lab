@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Mon Feb 26 18:00:11 2024
+# Process ID: 18652
+# Current directory: D:/MyProjects/FPGA/Lab2/full_addr/full_addr.runs/impl_1
+# Command line: vivado.exe -log full_addr.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source full_addr.tcl -notrace
+# Log file: D:/MyProjects/FPGA/Lab2/full_addr/full_addr.runs/impl_1/full_addr.vdi
+# Journal file: D:/MyProjects/FPGA/Lab2/full_addr/full_addr.runs/impl_1\vivado.jou
+#-----------------------------------------------------------
+source full_addr.tcl -notrace
