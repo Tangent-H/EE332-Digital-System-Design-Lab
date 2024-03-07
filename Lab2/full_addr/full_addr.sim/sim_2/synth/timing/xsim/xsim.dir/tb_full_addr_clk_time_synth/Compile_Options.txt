@@ -1,0 +1,1 @@
+-wto "5f1dbacfa2794ecb83f94e46a2875436" --incr --debug "typical" --relax --mt "2" --maxdelay -L "xil_defaultlib" -L "simprims_ver" -L "secureip" --snapshot "tb_full_addr_clk_time_synth" -transport_int_delays -pulse_r "0" -pulse_int_r "0" -pulse_e "0" -pulse_int_e "0" "xil_defaultlib.tb_full_addr_clk" "xil_defaultlib.glbl" -log "elaborate.log" 
