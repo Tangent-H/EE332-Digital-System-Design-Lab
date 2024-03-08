@@ -1,11 +1,11 @@
 // Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2020.2 (win64) Build 3064766 Wed Nov 18 09:12:45 MST 2020
-// Date        : Wed Mar  6 19:06:15 2024
+// Date        : Fri Mar  8 00:02:18 2024
 // Host        : Y9000X-TANGENT running 64-bit major release  (build 9200)
 // Command     : write_verilog -mode timesim -nolib -sdf_anno true -force -file
 //               D:/MyProjects/FPGA/Lab2/full_addr/full_addr.sim/sim_1/impl/timing/xsim/tb_full_addr_time_impl.v
-// Design      : full_addr
+// Design      : full_addr_clk
 // Purpose     : This verilog netlist is a timing simulation representation of the design and should not be modified or
 //               synthesized. Please ensure that this netlist is used with the corresponding SDF file.
 // Device      : xc7a100tcsg324-1
@@ -13,17 +13,19 @@
 `timescale 1 ps / 1 ps
 `define XIL_TIMING
 
-(* ECO_CHECKSUM = "1e9d569a" *) 
+(* ECO_CHECKSUM = "e02c4cd9" *) 
 (* NotValidForBitStream *)
-module full_addr
+module full_addr_clk
    (A,
     B,
     Cin,
+    clk,
     Sum,
     Cout);
   input A;
   input B;
   input Cin;
+  input clk;
   output Sum;
   output Cout;
 
@@ -35,8 +37,13 @@ module full_addr
   wire Cin_IBUF;
   wire Cout;
   wire Cout_OBUF;
+  wire Cout_i_1_n_0;
   wire Sum;
+  wire Sum0;
   wire Sum_OBUF;
+  wire clk;
+  wire clk_IBUF;
+  wire clk_IBUF_BUFG;
 
 initial begin
  $sdf_annotate("tb_full_addr_time_impl.sdf",,,,"tool_control");
@@ -56,22 +63,44 @@ end
   (* SOFT_HLUTNM = "soft_lutpair0" *) 
   LUT3 #(
     .INIT(8'hE8)) 
-    Cout_OBUF_inst_i_1
+    Cout_i_1
        (.I0(Cin_IBUF),
         .I1(B_IBUF),
         .I2(A_IBUF),
-        .O(Cout_OBUF));
+        .O(Cout_i_1_n_0));
+  FDRE #(
+    .INIT(1'b0)) 
+    Cout_reg
+       (.C(clk_IBUF_BUFG),
+        .CE(1'b1),
+        .D(Cout_i_1_n_0),
+        .Q(Cout_OBUF),
+        .R(1'b0));
   OBUF Sum_OBUF_inst
        (.I(Sum_OBUF),
         .O(Sum));
   (* SOFT_HLUTNM = "soft_lutpair0" *) 
   LUT3 #(
     .INIT(8'h96)) 
-    Sum_OBUF_inst_i_1
+    Sum_i_1
        (.I0(Cin_IBUF),
         .I1(A_IBUF),
         .I2(B_IBUF),
-        .O(Sum_OBUF));
+        .O(Sum0));
+  FDRE #(
+    .INIT(1'b0)) 
+    Sum_reg
+       (.C(clk_IBUF_BUFG),
+        .CE(1'b1),
+        .D(Sum0),
+        .Q(Sum_OBUF),
+        .R(1'b0));
+  BUFG clk_IBUF_BUFG_inst
+       (.I(clk_IBUF),
+        .O(clk_IBUF_BUFG));
+  IBUF clk_IBUF_inst
+       (.I(clk),
+        .O(clk_IBUF));
 endmodule
 `ifndef GLBL
 `define GLBL

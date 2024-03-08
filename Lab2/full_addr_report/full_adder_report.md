@@ -29,7 +29,7 @@ When applying the stimulus signals like Figure TODO, using the Boolean algebra, 
 
 ![wavedrom](./assets/wavedrom.svg)
 
-Note that, we added a 10ns of gate delay to all the gates above. Every grid represents 10ns. The dotted line in the signal means at this time, the signal is not yet initialized. In this timing diagram, the intermediate signals as well as the output signals are represented in a slow-variation fashion (i.e. there is a ramp when the signal jumps from 0 to 1).
+**Note that**, we added a 10ns of gate delay to all the gates above. Every grid represents 10ns. The dotted line in the signal means at this time, the signal is not yet initialized. In this timing diagram, the intermediate signals as well as the output signals are represented in a slow-variation fashion (i.e. there is a ramp when the signal jumps from 0 to 1 or vice versa).
 
 # Source Code Analysis
 
@@ -113,7 +113,7 @@ Post-synthesis functional simulation eliminates all self-defined gate delays as 
 
 ### Timing
 
-Post-synthesis timing simulation only differs from the functional simulation in that it involves generally estimated gate delays. As shown in Figure TODO, the output signals `Sum_tb` and `Count_tb` are simply a constant time-delayed version of the functional simulation as shown in Figure TODO.
+Post-synthesis timing simulation only differs from the functional simulation in that it involves generally estimated gate delays (i.e. gate delays in different devices are estimated the same). As shown in Figure TODO, the output signals `Sum_tb` and `Count_tb` are simply a constant time-delayed version of the functional simulation as shown in Figure TODO.
 
 ![synth_tim](./assets/synth_tim.png)
 
@@ -135,7 +135,9 @@ The most important part of the post-implementation timing simulation is that it 
 
 ![impl_tim](./assets/impl_tim.png)
 
-# Extension: Eliminating 
+# Extension: Eliminating Spikes In Post-Implementation Simulation
+
+
 
 # Conclusion
 

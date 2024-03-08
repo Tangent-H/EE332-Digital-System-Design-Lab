@@ -37,8 +37,8 @@ entity full_addr_clk is
            B : in STD_LOGIC;
            Cin : in STD_LOGIC;
            clk: in STD_LOGIC;
-           Sum : out STD_LOGIC:='0';
-           Cout : out STD_LOGIC:='0');
+           Sum : out STD_LOGIC;
+           Cout : out STD_LOGIC);
 end full_addr_clk;
 
 architecture dataflow of full_addr_clk is
