@@ -49,10 +49,54 @@ begin
     -- Define stimulus signal
     process is
     begin
-        wait for 7ns;
+        wait for 3ns;
         clk_tb <= not clk_tb;
     end process;
-    A_tb <= '1', '0' after 10ns, '1' after 20ns,'0' after 30ns, '1' after 40ns,'0' after 50ns, '1' after 60ns,'0' after 70ns;
-    B_tb <= '0', '1' after 20ns, '0' after 40ns, '1' after 60ns;
-    Cin_tb <= '0', '1' after 10ns, '0' after 20ns, '1' after 50ns, '0' after 60ns;
+
+process
+begin
+    A_tb <= '1';
+    wait for 10 ns;
+    A_tb <= '0';
+    wait for 10 ns;
+    A_tb <= '1';
+    wait for 10 ns;
+    A_tb <= '0';
+    wait for 10 ns;
+    A_tb <= '1';
+    wait for 10 ns;
+    A_tb <= '0';
+    wait for 10 ns;
+    A_tb <= '1';
+    wait for 10 ns;
+    A_tb <= '0';
+    wait for 40ns;
+end process;
+
+process
+begin
+    B_tb <= '0';
+    wait for 20 ns;
+    B_tb <= '1';
+    wait for 20 ns;
+    B_tb <= '0';
+    wait for 20 ns;
+    B_tb <= '1';
+    wait for 50ns;
+end process;
+
+process
+begin
+    Cin_tb <= '0';
+    wait for 10 ns;
+    Cin_tb <= '1';
+    wait for 10 ns;
+    Cin_tb <= '0';
+    wait for 30 ns;
+    Cin_tb <= '1';
+    wait for 10 ns;
+    Cin_tb <= '0';
+    wait for 50ns;
+end process;
+
 end test;

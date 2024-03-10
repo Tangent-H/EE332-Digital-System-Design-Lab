@@ -1,7 +1,7 @@
 -- Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2020.2 (win64) Build 3064766 Wed Nov 18 09:12:45 MST 2020
--- Date        : Fri Mar  8 00:07:10 2024
+-- Date        : Sun Mar 10 15:31:42 2024
 -- Host        : Y9000X-TANGENT running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -mode funcsim -nolib -force -file
 --               D:/MyProjects/FPGA/Lab2/full_addr/full_addr.sim/sim_2/impl/func/xsim/tb_full_addr_clk_func_impl.vhd

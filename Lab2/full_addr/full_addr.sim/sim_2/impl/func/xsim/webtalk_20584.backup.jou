@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Webtalk v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Sun Mar 10 15:08:13 2024
+# Process ID: 20584
+# Current directory: D:/MyProjects/FPGA/Lab2/full_addr/full_addr.sim/sim_2/impl/func/xsim
+# Command line: wbtcv.exe -mode batch -source D:/MyProjects/FPGA/Lab2/full_addr/full_addr.sim/sim_2/impl/func/xsim/xsim.dir/tb_full_addr_clk_func_impl/webtalk/xsim_webtalk.tcl -notrace
+# Log file: D:/MyProjects/FPGA/Lab2/full_addr/full_addr.sim/sim_2/impl/func/xsim/webtalk.log
+# Journal file: D:/MyProjects/FPGA/Lab2/full_addr/full_addr.sim/sim_2/impl/func/xsim\webtalk.jou
+#-----------------------------------------------------------
+source D:/MyProjects/FPGA/Lab2/full_addr/full_addr.sim/sim_2/impl/func/xsim/xsim.dir/tb_full_addr_clk_func_impl/webtalk/xsim_webtalk.tcl -notrace

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="impl_1" LaunchPart="xc7a100tcsg324-1" LaunchTime="1709826433">
+<GenRun Id="impl_1" LaunchPart="xc7a100tcsg324-1" LaunchTime="1710053709">
   <File Type="ROUTE-PWR" Name="full_addr_clk_power_routed.rpt"/>
   <File Type="PA-TCL" Name="full_addr_clk.tcl"/>
   <File Type="ROUTE-PWR-SUM" Name="full_addr_clk_power_summary_routed.pb"/>
@@ -16,12 +16,9 @@
   <File Type="BITSTR-BMM" Name="full_addr_clk_bd.bmm"/>
   <File Type="ROUTE-METHODOLOGY-DRC" Name="full_addr_clk_methodology_drc_routed.rpt"/>
   <File Type="BITSTR-MMI" Name="full_addr_clk.mmi"/>
-  <File Type="ROUTE-METHODOLOGY-DRC-PB" Name="full_addr_clk_methodology_drc_routed.pb"/>
   <File Type="BITSTR-SYSDEF" Name="full_addr_clk.sysdef"/>
-  <File Type="ROUTE-DRC-RPX" Name="full_addr_clk_drc_routed.rpx"/>
   <File Type="BITSTR-LTX" Name="debug_nets.ltx"/>
   <File Type="BITSTR-LTX" Name="full_addr_clk.ltx"/>
-  <File Type="RCFI_FILE" Name="full_addr_clk.rcfi"/>
   <File Type="WBT-USG" Name="usage_statistics_webtalk.html"/>
   <File Type="OPT-DRC" Name="full_addr_clk_drc_opted.rpt"/>
   <File Type="OPT-HWDEF" Name="full_addr_clk.hwdef"/>
@@ -51,8 +48,11 @@
   <File Type="PHYSOPT-DCP" Name="full_addr_clk_physopt.dcp"/>
   <File Type="POSTROUTE-PHYSOPT-DCP" Name="full_addr_clk_postroute_physopt.dcp"/>
   <File Type="POSTROUTE-PHYSOPT-BLACKBOX-DCP" Name="full_addr_clk_postroute_physopt_bb.dcp"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-PB" Name="full_addr_clk_methodology_drc_routed.pb"/>
+  <File Type="ROUTE-DRC-RPX" Name="full_addr_clk_drc_routed.rpx"/>
   <File Type="ROUTE-METHODOLOGY-DRC-RPX" Name="full_addr_clk_methodology_drc_routed.rpx"/>
   <File Type="PDI-FILE" Name="full_addr_clk.pdi"/>
+  <File Type="RCFI_FILE" Name="full_addr_clk.rcfi"/>
   <File Type="CFI_FILE" Name="full_addr_clk.cfi"/>
   <File Type="RNPI_FILE" Name="full_addr_clk.rnpi"/>
   <File Type="NPI_FILE" Name="full_addr_clk.npi"/>

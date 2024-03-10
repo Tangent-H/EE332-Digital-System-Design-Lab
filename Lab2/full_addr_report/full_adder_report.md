@@ -178,13 +178,25 @@ However, in my first experiment, I only found zero outputs of `Sum_tb` and `Coun
 
 ![image-20240309215900176](./assets/image-20240309215900176.png)
 
+**So, I first establish my hypothesis that D flip-flops on this board are not capable of handling this kind of rapid change of input signal.** Thereafter, I extend all signals’ duration tenfold in the testbench and make the period of the clock to be 33ns.
+
+Then I rerun the post-implementation simulation, and I found that while the general shape of the waveform is satisfying (Figure TODO), the `Sum_tb` output is not consistent with the one in the previous version (Figure TODO).
+
+![image-20240310155222394](./assets/image-20240310155222394.png)
+
+After tons of this kind of simulation with changing parameters, I found a phenomenon in common, that is: the output signals don’t vary at all until around 100ns after the stimulus signals were fed into the system.
+
+**Then I hypothesize that D flip-flops need more time to initialize than LUTs, due to there may exist larger parasitic capacitance in this kind of device, and the “power-on initialization” time is around 100ns.**
+
+So then, I make the input signals (clock included) back to the original state and repeat them twice. The post-implementation timing simulation waveform is shown in Figure TODO. 
+
+![image-20240310161708176](./assets/image-20240310161708176.png)
+
+From Figure TODO, we can see that in the first cycle, the outputs are all zeros. However, during the second cycle, all outputs are in accord with our manual derivation with no spikes at all. And the period of the clock can be as short as 3ns!
+
 # Conclusion
 
-In this lab, we investigate the differences among the five types of simulations. These simulations stand for each stage in which we carry our design from a draft to a hardware-compatible one. As the simulation proceeds, we can discover if our design can be carried out on physical hardware. Post-synthesis simulation tells us how the logic gate will be replaced by stuff like LUTs on hardware, and whether this design is synthesizable. Then post-implementation simulation helps us uncover potential problems that will happen on hardware.
+In this lab, we investigate the differences among the five types of simulations. These simulations stand for each stage in which we carry our design from a draft to a hardware-compatible one. As the simulation proceeds, we can discover if our design can be carried out on physical hardware. Post-synthesis simulation tells us how the logic gate will be replaced by stuff like LUTs on hardware, and whether this design is synthesizable. Then post-implementation simulation helps us uncover potential problems that will happen on hardware. On top of that, we delve deeper into the formation of spikes in post-implementation simulation, and we develop a strategy of using clock-driven output to eliminate unexpected spikes.
 
 # Appendix: Full code
-
-
-
-
 

@@ -1,7 +1,7 @@
 // Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2020.2 (win64) Build 3064766 Wed Nov 18 09:12:45 MST 2020
-// Date        : Thu Mar  7 23:27:13 2024
+// Date        : Sun Mar 10 15:28:00 2024
 // Host        : Y9000X-TANGENT running 64-bit major release  (build 9200)
 // Command     : write_verilog -mode timesim -nolib -sdf_anno true -force -file
 //               D:/MyProjects/FPGA/Lab2/full_addr/full_addr.sim/sim_2/synth/timing/xsim/tb_full_addr_clk_time_synth.v

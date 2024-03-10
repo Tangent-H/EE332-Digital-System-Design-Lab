@@ -1,1 +1,1 @@
--wto "5f1dbacfa2794ecb83f94e46a2875436" --incr --debug "typical" --relax --mt "2" -L "xil_defaultlib" -L "secureip" --snapshot "tb_full_addr_clk_behav" "xil_defaultlib.tb_full_addr_clk" -log "elaborate.log" 
+-wto "5f1dbacfa2794ecb83f94e46a2875436" --incr --debug "typical" --relax --mt "32" -L "xil_defaultlib" -L "secureip" --snapshot "tb_full_addr_clk_behav" "xil_defaultlib.tb_full_addr_clk" -log "elaborate.log" 
