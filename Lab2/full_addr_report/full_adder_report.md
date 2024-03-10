@@ -23,7 +23,7 @@ This expression can be transferred to an equivalent logic diagram  (Figure TODO)
 
 where $A$ and $B$ are two one-bit inputs,  $Cin$ is the carry bit of the previous bit full adder (i.e. $Cout$ of the previous full adder). $s1$, $s2$ and $s3$​​ are intermediate signals. 
 
-When applying the stimulus signals like Figure TODO, using the Boolean algebra, we can then manually derive the timing diagram (Figure TODO) of the above logic diagram.
+When applying the stimulus signals like Figure TODO, using the Boolean algebra, we can then manually derive the timing diagram (Figure TODO) of the above logic diagram. The timing diagram uses *Wavedrom editor* to generate.
 
 ![image-20240306190552572](./assets/image-20240306190552572.png)
 
@@ -137,11 +137,52 @@ The most important part of the post-implementation timing simulation is that it 
 
 # Extension: Eliminating Spikes In Post-Implementation Simulation
 
+In the post-implementation timing simulation, we notice that there exist spikes in the waveform. The implementation is done by placing devices and routing wires on board, which can lead to different delays if the signal takes on different paths. And this tiny delay difference can result in spikes.
 
+My core idea for eliminating the spikes is that we can add a clock signal to drive the output, instead of making the full adder output anytime. This can greatly reduce the potential of the full adder to capture some transient states that exhibit singularity.
+
+This idea needs the involvement of **D flip-flop**, which only outputs the result when there is a rising edge of the clock signal.
+
+In the design source, we need to add an input port of clock, and also add a `when` statement at the output.
+
+```vhdl
+entity full_addr_clk is
+Port(...
+	clk: in STD_LOGIC;
+	...);
+end full_addr_clk;
+    
+architecture dataflow of full_addr_clk is
+    ...
+begin
+    ...
+    L4: sum <= (s1 xor Cin) after gate_delay when rising_edge(clk);
+    L5: cout <= (s2 or s3) after gate_delay when rising_edge(clk);
+    ...
+end architecture dataflow;
+```
+
+In the testbench, I added a clock source, which is a `process`:
+
+```vhdl
+    process is
+    begin
+        wait for 3ns;
+        clk_tb <= not clk_tb;
+    end process;
+```
+
+The period of 3ns is arbitrarily taken. However, if the period is set too short, D flip-flops may not react correctly. And if the period is set too long, the delay of the full adder then will be too large.
+
+However, in my first experiment, I only found zero outputs of `Sum_tb` and `Count_tb` in post-implement timing simulation (Figure TODO), while all other functional simulations and behavioral simulation accord with intuition.
+
+![image-20240309215900176](./assets/image-20240309215900176.png)
 
 # Conclusion
 
-In this lab, we investigate the differences among the five types of simulations. These simulations stand for each stage we carry our design from a draft to a hardware-compatible one. As the simulation proceeds, we can discover if our design can be carried out on physical hardware. Post-synthesis simulation tells us how the logic gate will be replaced by stuff like LUTs on hardware, and whether this design is synthesizable. Then post-implementation simulation helps us uncover potential problems that will happen on hardware.
+In this lab, we investigate the differences among the five types of simulations. These simulations stand for each stage in which we carry our design from a draft to a hardware-compatible one. As the simulation proceeds, we can discover if our design can be carried out on physical hardware. Post-synthesis simulation tells us how the logic gate will be replaced by stuff like LUTs on hardware, and whether this design is synthesizable. Then post-implementation simulation helps us uncover potential problems that will happen on hardware.
+
+# Appendix: Full code
 
 
 

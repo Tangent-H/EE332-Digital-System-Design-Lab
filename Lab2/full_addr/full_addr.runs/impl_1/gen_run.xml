@@ -23,12 +23,27 @@
   <File Type="BITSTR-LTX" Name="full_addr_clk.ltx"/>
   <File Type="RCFI_FILE" Name="full_addr_clk.rcfi"/>
   <File Type="WBT-USG" Name="usage_statistics_webtalk.html"/>
+  <File Type="OPT-DRC" Name="full_addr_clk_drc_opted.rpt"/>
   <File Type="OPT-HWDEF" Name="full_addr_clk.hwdef"/>
+  <File Type="PLACE-IO" Name="full_addr_clk_io_placed.rpt"/>
+  <File Type="PLACE-UTIL" Name="full_addr_clk_utilization_placed.rpt"/>
+  <File Type="PLACE-UTIL-PB" Name="full_addr_clk_utilization_placed.pb"/>
+  <File Type="PLACE-CTRL" Name="full_addr_clk_control_sets_placed.rpt"/>
   <File Type="PLACE-PRE-SIMILARITY" Name="full_addr_clk_incremental_reuse_pre_placed.rpt"/>
+  <File Type="ROUTE-DRC" Name="full_addr_clk_drc_routed.rpt"/>
+  <File Type="ROUTE-DRC-PB" Name="full_addr_clk_drc_routed.pb"/>
+  <File Type="ROUTE-PWR-RPX" Name="full_addr_clk_power_routed.rpx"/>
+  <File Type="ROUTE-STATUS" Name="full_addr_clk_route_status.rpt"/>
+  <File Type="ROUTE-STATUS-PB" Name="full_addr_clk_route_status.pb"/>
   <File Type="ROUTE-DCP" Name="full_addr_clk_routed.dcp"/>
   <File Type="ROUTE-ERROR-DCP" Name="full_addr_clk_routed_error.dcp"/>
   <File Type="ROUTE-BLACKBOX-DCP" Name="full_addr_clk_routed_bb.dcp"/>
+  <File Type="ROUTE-TIMINGSUMMARY" Name="full_addr_clk_timing_summary_routed.rpt"/>
   <File Type="ROUTE-TIMING-PB" Name="full_addr_clk_timing_summary_routed.pb"/>
+  <File Type="ROUTE-TIMING-RPX" Name="full_addr_clk_timing_summary_routed.rpx"/>
+  <File Type="ROUTE-BUS-SKEW" Name="full_addr_clk_bus_skew_routed.rpt"/>
+  <File Type="ROUTE-BUS-SKEW-PB" Name="full_addr_clk_bus_skew_routed.pb"/>
+  <File Type="ROUTE-BUS-SKEW-RPX" Name="full_addr_clk_bus_skew_routed.rpx"/>
   <File Type="OPT-DCP" Name="full_addr_clk_opt.dcp"/>
   <File Type="PLACE-DCP" Name="full_addr_clk_placed.dcp"/>
   <File Type="PWROPT-DCP" Name="full_addr_clk_pwropt.dcp"/>
@@ -36,27 +51,12 @@
   <File Type="PHYSOPT-DCP" Name="full_addr_clk_physopt.dcp"/>
   <File Type="POSTROUTE-PHYSOPT-DCP" Name="full_addr_clk_postroute_physopt.dcp"/>
   <File Type="POSTROUTE-PHYSOPT-BLACKBOX-DCP" Name="full_addr_clk_postroute_physopt_bb.dcp"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-RPX" Name="full_addr_clk_methodology_drc_routed.rpx"/>
   <File Type="PDI-FILE" Name="full_addr_clk.pdi"/>
   <File Type="CFI_FILE" Name="full_addr_clk.cfi"/>
   <File Type="RNPI_FILE" Name="full_addr_clk.rnpi"/>
   <File Type="NPI_FILE" Name="full_addr_clk.npi"/>
   <File Type="RBD_FILE" Name="full_addr_clk.rbd"/>
-  <File Type="OPT-DRC" Name="full_addr_clk_drc_opted.rpt"/>
-  <File Type="PLACE-UTIL" Name="full_addr_clk_utilization_placed.rpt"/>
-  <File Type="PLACE-UTIL-PB" Name="full_addr_clk_utilization_placed.pb"/>
-  <File Type="PLACE-IO" Name="full_addr_clk_io_placed.rpt"/>
-  <File Type="PLACE-CTRL" Name="full_addr_clk_control_sets_placed.rpt"/>
-  <File Type="ROUTE-TIMINGSUMMARY" Name="full_addr_clk_timing_summary_routed.rpt"/>
-  <File Type="ROUTE-TIMING-RPX" Name="full_addr_clk_timing_summary_routed.rpx"/>
-  <File Type="ROUTE-STATUS" Name="full_addr_clk_route_status.rpt"/>
-  <File Type="ROUTE-STATUS-PB" Name="full_addr_clk_route_status.pb"/>
-  <File Type="ROUTE-PWR-RPX" Name="full_addr_clk_power_routed.rpx"/>
-  <File Type="ROUTE-DRC" Name="full_addr_clk_drc_routed.rpt"/>
-  <File Type="ROUTE-DRC-PB" Name="full_addr_clk_drc_routed.pb"/>
-  <File Type="ROUTE-METHODOLOGY-DRC-RPX" Name="full_addr_clk_methodology_drc_routed.rpx"/>
-  <File Type="ROUTE-BUS-SKEW" Name="full_addr_clk_bus_skew_routed.rpt"/>
-  <File Type="ROUTE-BUS-SKEW-RPX" Name="full_addr_clk_bus_skew_routed.rpx"/>
-  <File Type="ROUTE-BUS-SKEW-PB" Name="full_addr_clk_bus_skew_routed.pb"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
     <Filter Type="Srcs"/>
     <File Path="$PSRCDIR/sources_1/new/full_addr_clk.vhd">

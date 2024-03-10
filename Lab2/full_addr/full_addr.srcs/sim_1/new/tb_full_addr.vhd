@@ -46,7 +46,7 @@ begin
     -- Create an instance of the full_addr circuit
     UUT : full_addr port map (A=>A_tb, B=>B_tb, Cin=>Cin_tb, Sum=>Sum_tb, Cout=>Cout_tb);
     -- Define stimulus signal
-    A_tb <= '1', '0' after 100ns, '1' after 200ns,'0' after 300ns, '1' after 400ns,'0' after 500ns, '1' after 600ns,'0' after 700ns;
-    B_tb <= '0', '1' after 200ns, '0' after 400ns, '1' after 600ns;
-    Cin_tb <= '0', '1' after 100ns, '0' after 200ns, '1' after 500ns, '0' after 600ns;
+    A_tb <= '1', '0' after 10ns, '1' after 20ns,'0' after 30ns, '1' after 40ns,'0' after 50ns, '1' after 60ns,'0' after 70ns;
+    B_tb <= '0', '1' after 20ns, '0' after 40ns, '1' after 60ns;
+    Cin_tb <= '0', '1' after 10ns, '0' after 20ns, '1' after 50ns, '0' after 60ns;
 end test;
