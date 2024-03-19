@@ -7,20 +7,31 @@ entity tb_prior_enc is
 end tb_prior_enc ; 
 
 architecture test of tb_prior_enc is
-    component prior_enc is
+    -- component prior_enc is
+    --     port (
+    --         S : in std_logic_vector(15 downto 0) ;
+    --         Z : out std_logic_vector(3 downto 0);
+    --         r : out std_logic
+    --       ) ;
+    -- end component ;
+
+    component prior_enc164 is
         port (
-            S : in std_logic_vector(15 downto 0) ;
-            Z : out std_logic_vector(3 downto 0);
-            r : out std_logic
-          ) ;
-    end component ;
+            en164 : in std_logic;
+            S164 : in std_logic_vector(15 downto 0);
+            Z164 : out std_logic_vector(3 downto 0);
+            r164 : out std_logic;
+            ys164 : out std_logic
+        );
+    end component;
 
 
     signal S_tb : std_logic_vector(15 downto 0) ;
     signal Z_tb : std_logic_vector(3 downto 0) ;
     signal r_tb : std_logic ;
 begin
-    UUT: prior_enc port map (S => S_tb, Z => Z_tb, r => r_tb) ;
+    -- UUT1: prior_enc port map (S => S_tb, Z => Z_tb, r => r_tb) ;
+    UUT2: prior_enc164 port map (en164 => '1', S164 => S_tb, Z164 => Z_tb, r164 => r_tb, ys164 => open);
     
     seq: process
     begin
