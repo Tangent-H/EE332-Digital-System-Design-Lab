@@ -14,6 +14,12 @@
 
 synthesis和implementation，只会去实现在top module中实例化的component，也就是说，如果有在source design中有两个互不相关的entity，那么在synthesis和implementation中，没有set as top的entity不会被实现，所以仿真的时候（testbench）里面那些没有实现的entity即便是在post-implementation中也会显示出behavioral的波形。
 
+## synthesis & implementation自动优化
+
+有的时候，逻辑写得越简单越好（能用behavioral的就别用structure了），这样很有可能synthesis和implementation中得到的结果会比自己想的优化方法效果还要好
+
+（e.g. lab2ex3中，链状结果的优先编码器被优化到了和自己手动优化几乎相同的水平）
+
 ## 其他
 
 如果真的遇到了无法解释的问题，也有可能是vivado的bug。
