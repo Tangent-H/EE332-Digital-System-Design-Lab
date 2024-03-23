@@ -13,12 +13,14 @@ entity prior_enc42 is
 end prior_enc42;
 
 architecture behavioral of prior_enc42 is
+    signal m42 : std_logic;
     begin
     Z42 <= "11" when S42(3) = '1' and en42 = '1' else
         "10" when S42(2) = '1' and en42 = '1' else
         "01" when S42(1) = '1' and en42 = '1' else
         "00" when S42(0) = '1' and en42 = '1' else
         "00";
-        r42 <= S42(3) or S42(2) or S42(1) or S42(0); --indicating that there is a 1 in the input
-        ys42 <= (not (S42(3) or S42(2) or S42(1) or S42(0))) and en42;   --indicating that there is no 1 in the input and the enable is high, at this time, lower priority encoder should be enabled
+        m42 <= (S42(3) or S42(2)) or (S42(1) or S42(0)); --indicating that there is a 1 in the input
+        r42 <= m42;
+        ys42 <= (not m42) and en42;   --indicating that there is no 1 in the input and the enable is high, at this time, lower priority encoder should be enabled
     end architecture;
