@@ -1,6 +1,0 @@
-# compile vhdl design source files
-vhdl xil_defaultlib  \
-"../../../../../full_addr.srcs/sim_2/new/tb_full_addr_clk.vhd" \
-
-# Do not sort compile order
-nosort
