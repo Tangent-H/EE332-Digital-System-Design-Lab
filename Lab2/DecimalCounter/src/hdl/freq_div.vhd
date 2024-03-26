@@ -11,18 +11,20 @@ entity freq_div is
 end freq_div;
 
 architecture behavioral of freq_div is
-constant N : integer := 2;
-signal q_reg, q_next : integer range 0 to N-1 := 0;
--- to count 10^8 clock cycles, we need 27 bits
+    constant N : integer := 5;
+    signal q_reg, q_next : integer range 0 to N-1 := 0;
+    -- signal out_tmp : std_logic := '0';
 begin
-count_PROC : process(clk, rst) is
-begin
-    if rst = '1' then
-        q_reg <= 0;
-    elsif (clk'event and clk = '1') then
-        q_reg <= q_next;
-    end if;
-end process;
-q_next <= (q_reg + 1) when q_reg < N-1 else 0;
-out_clk <= '1' when q_reg = N-1 else '0';
+    count_PROC : process(clk, rst) is
+        begin
+            if rst = '1' then
+                q_reg <= 0;
+            elsif (clk'event and clk = '1') then
+                q_reg <= q_next;
+            end if;
+    end process;
+
+    q_next <= (q_reg + 1) when q_reg < N-1 else 0;
+    -- out_tmp <= (not out_tmp) when q_reg ;    !!don't use signal flipping in a singal concurrent statement or the output will be flipping all the time
+    out_clk <= '1' when q_reg = N-1 else '0';
 end architecture;

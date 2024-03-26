@@ -9,13 +9,13 @@ entity counter is
         rst : in std_logic;
         en : in std_logic;
         prst : in std_logic;
-        pval : in std_logic_vector(3 downto 0);
-        cnt : out std_logic_vector(3 downto 0)       
+        pval : in std_logic_vector(11 downto 0);
+        cnt : out std_logic_vector(11 downto 0)       
     );
 end counter;
 
 architecture behavioral of counter is
-signal q_reg, q_next : std_logic_vector(3 downto 0);
+signal q_reg, q_next : std_logic_vector(11 downto 0);
 begin
 process(clk, rst, prst) is
 begin
@@ -28,6 +28,8 @@ begin
     end if;
 end process;
 
-q_next <= q_reg + 1 when q_reg < 1001 else "0000";
+q_next(3 downto 0) <= "0000" when q_reg(3 downto 0) >= "1001" else q_reg(3 downto 0) + 1;
+q_next(7 downto 4) <= "0000" when q_reg(7 downto 0) >= "10011001" else q_reg(7 downto 4) + 1 when q_reg(3 downto 0) = "1001" else q_reg(7 downto 4);
+q_next(11 downto 8) <= "0000" when q_reg(11 downto 0) >= "100110011001" else q_reg(11 downto 8) + 1 when q_reg(7 downto 0) >= "10011001" else q_reg(11 downto 8);
 cnt <= q_reg;
 end architecture;

@@ -13,33 +13,26 @@ entity top_module is
 end top_module;
 
 architecture behavioral of top_module is
-component freq_div is
-    port (
-        clk : in std_logic;
-        rst : in std_logic;
-        out_clk : out std_logic
-    );
-end component;
+    component freq_div is
+        port (
+            clk : in std_logic;
+            rst : in std_logic;
+            out_clk : out std_logic
+        );
+    end component;
 
-component counter is
-    port (
-        clk : in std_logic;
-        rst : in std_logic;
-        en : in std_logic;
-        prst : in std_logic;
-        pval : in std_logic_vector(3 downto 0);
-        cnt : out std_logic_vector(3 downto 0)       
-    );
-end component;
-signal en_cnt : std_logic_vector(2 downto 0) := "000";
-signal temp : std_logic_vector(11 downto 0) := (others => '0');
+    component counter is
+        port (
+            clk : in std_logic;
+            rst : in std_logic;
+            en : in std_logic;
+            prst : in std_logic;
+            pval : in std_logic_vector(11 downto 0);
+            cnt : out std_logic_vector(11 downto 0)       
+        );
+    end component;
+    signal clk_div : std_logic;
 begin
-    fd: freq_div port map(clk => clk_t, rst => rst_t, out_clk => en_cnt(0));
-    cnt1: counter port map(clk => clk_t, rst => rst_t, en => en_cnt(0), prst => prst_t, pval => pvalue_t(3 downto 0), cnt => temp(3 downto 0));
-    cnt2: counter port map(clk => clk_t, rst => rst_t, en => en_cnt(1), prst => prst_t, pval => pvalue_t(7 downto 4), cnt => temp(7 downto 4));
-    cnt3: counter port map(clk => clk_t, rst => rst_t, en => en_cnt(2), prst => prst_t, pval => pvalue_t(11 downto 8), cnt => temp(11 downto 8));
-
-    en_cnt(1) <= '1' when (temp(3 downto 0) = "1001" and en_cnt(0)'event and en_cnt(0) = '1') else '0';
-    en_cnt(2) <= '1' when (temp(7 downto 0) = "10011001" and en_cnt(0)'event and en_cnt(0) = '1')else '0';
-    cnt_t <= temp;
+    fd: freq_div port map(clk => clk_t, rst => rst_t, out_clk => clk_div);
+    cnt: counter port map(clk => clk_t, rst => rst_t, en => clk_div, prst => prst_t, pval => pvalue_t, cnt => cnt_t);
 end architecture;
