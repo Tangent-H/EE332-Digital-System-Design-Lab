@@ -11,7 +11,7 @@ entity freq_div is
 end freq_div;
 
 architecture behavioral of freq_div is
-    constant N : integer := 5;
+    constant N : integer := 10e8;
     signal q_reg, q_next : integer range 0 to N-1 := 0;
     -- signal out_tmp : std_logic := '0';
 begin
