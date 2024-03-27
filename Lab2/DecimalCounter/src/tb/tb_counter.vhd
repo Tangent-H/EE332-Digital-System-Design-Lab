@@ -26,7 +26,7 @@ architecture sim of counter_tb is
     --     );
     -- end component;
 
-    constant clk_hz : integer := 10e8;
+    constant clk_hz : integer := 10e6;
     constant clk_period : time := 1 sec / clk_hz;
 
     signal clk_tb : std_logic := '1';

@@ -17,7 +17,6 @@ end counter;
 architecture behavioral of counter is
     signal q_reg, q_next : std_logic_vector(11 downto 0):= (others => '0');
 begin
-    cnt <= (others => '0');
     process(clk, rst, prst) is
     begin
         if prst = '1' then
