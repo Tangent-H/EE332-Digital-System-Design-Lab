@@ -11,3 +11,4 @@
 *.tex
 *.bkp
 *.dtmp
+*.gen/

@@ -18,21 +18,12 @@ architecture sim of counter_tb is
         );
     end component;
 
-    -- component freq_div is 
-    --     port (
-    --         clk : in std_logic;
-    --         rst : in std_logic;
-    --         out_clk : out std_logic
-    --     );
-    -- end component;
-
-    constant clk_hz : integer := 10e6;
+    constant clk_hz : integer := 1e8;
     constant clk_period : time := 1 sec / clk_hz;
 
     signal clk_tb : std_logic := '1';
     signal rst_tb : std_logic := '1';
     signal d_tb : std_logic_vector(11 downto 0) := (others => '0');
-    -- signal clk_div_tb : std_logic;
 begin
 
     clk_tb <= not clk_tb after clk_period / 2;
@@ -46,13 +37,6 @@ begin
         cnt_t => d_tb
     );
 
-    -- CLK_D: freq_div port map (
-    --     clk => clk_tb,
-    --     rst => rst_tb,
-    --     out_clk => clk_div_tb
-    -- );
-
-    --moniter
     process
         constant n : integer := 1000;
         variable num : integer range 0 to 999 := 0;
