@@ -12,7 +12,7 @@ entity freq_divider is
 end freq_divider;
 
 architecture arch of freq_divider is
-    constant cnt_max : integer := 2 - 1;
+    constant cnt_max : integer := 1250 - 1;
     signal q_reg, q_next : integer range 0 to cnt_max;
 begin
     process(clk10mhz, rst) is

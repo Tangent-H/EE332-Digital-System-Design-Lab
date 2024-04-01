@@ -40,23 +40,23 @@ architecture arch of top_module is
             cathode_out : out std_logic_vector(6 downto 0)
         );
     end component;
-    -- component pll_clk is
-    --     port (
-    --         clk10mhz : out std_logic;
-    --         reset : in std_logic;
-    --         locked : out std_logic;
-    --         clk100mhz : in std_logic
-    --     );
-    -- end component;
-    -- signal locked : std_logic;
+    component pll_clk is
+        port (
+            clk10mhz : out std_logic;
+            reset : in std_logic;
+            locked : out std_logic;
+            clk100mhz : in std_logic
+        );
+    end component;
+    signal locked : std_logic;
     signal enable : std_logic;
     signal clk10mhz : std_logic;
     signal pulse8khz : std_logic;
     signal cnt : std_logic_vector(2 downto 0);
     signal result1, result2, result3, result4 : std_logic_vector(3 downto 0);
 begin
-    -- pll: pll_clk port map (clk10mhz => clk10mhz, reset => rst, locked => locked, clk100mhz => clk);
-    clk10mhz <= clk;    -- testing
+    pll: pll_clk port map (clk10mhz => clk10mhz, reset => rst, locked => locked, clk100mhz => clk);
+    -- clk10mhz <= clk;    -- testing
     freq_div: freq_divider port map (clk10mhz => clk10mhz, rst => rst, pulse8khz => pulse8khz);
     anode_driv: anode_driver port map (clk => clk10mhz, en => enable, rst => rst, sel => anode, cnt => cnt);
     multi_hex_dec: multi_hex_decoder port map (sel => cnt, in_hex1 => A, in_hex2 => B, in_hex3 => C, in_hex4 => D, in_hex5 => result1, in_hex6 => result2, in_hex7 => result3, in_hex8 => result4, cathode_out => cathode);
