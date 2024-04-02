@@ -49,3 +49,11 @@ synthesis和implementation，只会去实现在top module中实例化的componen
    虽然看起来只翻转一次，但是当`q_reg`条件满足时，`out_tmp`自身的翻转会导致这条语句被无限次激活，导致在仿真中输出的错误结果就是仿真仿了0ps，但是仿真的步数1000次已经用完
 
 4. 要想表示10的8次方，不是10e8，而是1e8
+
+
+
+## simple report 要求
+
+1. 概念框图+代码，两者需要对应（包括label和信号的变量名上要对应）
+2. 不需要intro和conclusion
+3. 不需要多少文字说明
