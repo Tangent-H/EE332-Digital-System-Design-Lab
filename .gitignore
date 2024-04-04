@@ -5,6 +5,7 @@
 *.runs/
 *.sim/
 *.srcs/
+*_bkp/
 *.xpr
 *.jou
 *.log
