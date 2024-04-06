@@ -29,7 +29,7 @@ begin
     end process;
 
     q_next(3 downto 0) <= "0000" when q_reg(3 downto 0) >= "1001" else q_reg(3 downto 0) + 1;
-    q_next(7 downto 4) <= "0000" when q_reg(7 downto 0) >= "10011001" else q_reg(7 downto 4) + 1 when q_reg(3 downto 0) = "1001" else q_reg(7 downto 4);
+    q_next(7 downto 4) <= "0000" when q_reg(7 downto 0) >= "10011001" else q_reg(7 downto 4) + 1 when q_reg(3 downto 0) >= "1001" else q_reg(7 downto 4);
     q_next(11 downto 8) <= "0000" when q_reg(11 downto 0) >= "100110011001" else q_reg(11 downto 8) + 1 when q_reg(7 downto 0) >= "10011001" else q_reg(11 downto 8);
     cnt <= q_reg;
 end architecture;
