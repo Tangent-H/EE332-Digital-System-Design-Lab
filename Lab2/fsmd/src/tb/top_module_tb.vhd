@@ -41,7 +41,7 @@ begin
         rst <= '0';
         wait for 200 ns;
         start <= '1';
-        wait for clk_period * 1;
+        wait for clk_period * 5;
         start <= '0';
         wait;
     end process;

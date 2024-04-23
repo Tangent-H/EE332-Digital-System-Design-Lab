@@ -16,10 +16,11 @@ entity fib is
 end fib;
 
 architecture rtl of fib is
-    type state_type is (idle, op);
+    type state_type is (idle, load, op);
     signal state_reg, state_next : state_type;
     signal n1_reg, n1_next, n2_reg, n2_next : std_logic_vector(31 downto 0);
     signal ni_reg, ni_next : std_logic_vector(5 downto 0);
+    signal fib_reg, fib_next : std_logic_vector(31 downto 0);
 begin
     --- state and data registers
     process(clk, rst) is
@@ -29,11 +30,13 @@ begin
             n1_reg <= std_logic_vector(to_unsigned(1,32));
             n2_reg <= ((others => '0'));
             ni_reg <= (others => '0');
+            fib_reg <= (others => '0');
         elsif rising_edge(clk) then
             state_reg <= state_next;
             n1_reg <= n1_next;
             n2_reg <= n2_next;
             ni_reg <= ni_next;
+            fib_reg <= fib_next;
         end if;
     end process;
 
@@ -42,6 +45,7 @@ begin
     begin
         --- default values
         ready <= '0';
+        fib_next <= fib_reg;
         state_next <= state_reg;
         n1_next <= n1_reg;
         n2_next <= n2_reg;
@@ -53,23 +57,29 @@ begin
                 if start = '1' then
                     n1_next <= std_logic_vector(to_unsigned(1,32));
                     n2_next <= (others => '0');
-                    ni_next <= n;   --- need delta delay to take in effect, thus, don't use ni_next = 0 in the next line
                     if n = 0 then
-                        fib_n <= (others => '0');
+                        fib_next <= (others => '0');
                     elsif n = 1 then
-                        fib_n <= std_logic_vector(to_unsigned(1,32));
+                        fib_next <= std_logic_vector(to_unsigned(1,32));
                     else
-                        state_next <= op;
+                        state_next <= load;
                     end if;
+                end if;
+            when load =>
+                ni_next <= n;   --- don't assign a signal and use it immediately in a process (delta delay)
+                if start ='0' then
+                    state_next <= op;
                 end if;
             when op => 
                 n1_next <= n1_reg + n2_reg;
                 n2_next <= n1_reg;
                 ni_next <= ni_reg - 1;
                 if ni_next = 1 then
-                    fib_n <= n1_reg;
+                    fib_next <= n1_reg;
                     state_next <= idle;
                 end if;
         end case;
     end process;
+
+    fib_n <= fib_reg;
 end architecture;
