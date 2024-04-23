@@ -36,18 +36,20 @@ architecture rtl of top_module is
         );
     end component;
     
-    -- component ila_0 is
-    --     PORT (
-    --         clk : IN STD_LOGIC;
-    --         probe0 : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
-    --         probe1 : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
-    --         probe2 : IN STD_LOGIC_VECTOR(6 DOWNTO 0)
-    --     );
-    -- end component;
+    component ila_0 is
+        PORT (
+            clk : IN STD_LOGIC;
+            probe0 : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+            probe1 : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
+            probe2 : IN STD_LOGIC_VECTOR(6 DOWNTO 0);
+            probe3 : IN STD_LOGIC_VECTOR(0 DOWNTO 0)
+        );
+    end component;
 
     signal fib_n : std_logic_vector(31 downto 0);
     signal anode_t : std_logic_vector(7 downto 0);
     signal cathode_t : std_logic_vector(6 downto 0);
+    signal start_t : std_logic_vector(0 downto 0);
 
 begin
     fib_inst : fib
@@ -69,14 +71,16 @@ begin
             cathode => cathode_t
         );
 
-    -- ila_0_inst : ila_0
-    --     PORT MAP (
-    --         clk => clk,
-    --         probe0 => fib_n,
-    --         probe1 => anode_t,
-    --         probe2 => cathode_t
-    --     );
+    ila_0_inst : ila_0
+        PORT MAP (
+            clk => clk,
+            probe0 => fib_n,
+            probe1 => anode_t,
+            probe2 => cathode_t,
+            probe3 => start_t
+        );
         
     anode <= anode_t;
-    cathode <= cathode_t;    
+    cathode <= cathode_t;
+    start_t(0) <= start;
 end architecture;
