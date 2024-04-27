@@ -16,7 +16,7 @@ entity fib is
 end fib;
 
 architecture rtl of fib is
-    type state_type is (idle, load, op);
+    type state_type is (idle, load, op1, op2);
     signal state_reg, state_next : state_type;
     signal n1_reg, n1_next, n2_reg, n2_next : std_logic_vector(31 downto 0);
     signal ni_reg, ni_next : std_logic_vector(5 downto 0);
@@ -72,18 +72,20 @@ begin
                         fib_next <= std_logic_vector(to_unsigned(1,32));
                         state_next <= idle;
                     else
-                        state_next <= op;
+                        state_next <= op1;
                     end if;
                 end if;
-            when op => 
+            when op1 => 
                 n1_next <= n1_reg + n2_reg;
                 n2_next <= n1_reg;
+                state_next <= op2;
+            when op2 => 
                 ni_next <= ni_reg - 1;
                 if ni_reg = 1 then
                     fib_next <= n1_reg;
                     state_next <= idle;
                 end if;
-        end case;
+    end case;
     end process;
     fib_n <= fib_reg;
 end architecture;
