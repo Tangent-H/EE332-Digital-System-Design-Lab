@@ -13,3 +13,5 @@
 *.bkp
 *.dtmp
 *.gen/
+.vscode
+
