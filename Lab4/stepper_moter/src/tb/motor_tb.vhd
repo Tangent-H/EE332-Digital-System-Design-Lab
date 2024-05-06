@@ -12,7 +12,6 @@ architecture sim of motor_tb is
 
     constant clk_hz : integer := 1e8;
     constant clk_period : time := 1 sec / clk_hz;
-
     signal clk : std_logic := '1';
     signal rst : std_logic := '1';
     signal direction_tb : std_logic := '0';

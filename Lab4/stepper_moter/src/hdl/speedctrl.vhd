@@ -11,7 +11,7 @@ entity speedctrl is
         rst : in std_logic;
         sp_up : in std_logic;
         sp_dn : in std_logic;
-        speed : out integer range 0 to 9
+        speed : out integer range 0 to 4
     );
 end speedctrl;
 
@@ -29,7 +29,9 @@ architecture rtl of speedctrl is
     end component;
 
     signal sp_up_d, sp_dn_d : std_logic;
-    signal speed_next, speed_reg : integer range 0 to 600 := 45;
+    signal sp_up_d_last, sp_dn_d_last : std_logic := '0';
+    signal speed_reg : integer range 0 to 4 := 2;
+
 begin
     db1: debounce
         generic map (
@@ -55,21 +57,22 @@ begin
     process (clk, rst)
     begin
         if rst = '1' then
-            speed_reg <= 5;
+            speed_reg <= 2;
+            sp_up_d_last <= '0';
+            sp_dn_d_last <= '0';
         elsif rising_edge(clk) then
-            speed_reg <= speed_next;
-        end if;
-    end process;
-
-    process (sp_up_d, sp_dn_d, speed_reg)
-    begin
-        speed_next <= speed_reg;
-        if rising_edge(sp_up_d) or rising_edge(sp_dn_d) then
-            if sp_up_d = '1' and sp_dn_d = '0' then
-                speed_next <= speed_reg + 1;
-            elsif sp_up_d = '0' and sp_dn_d = '1' then
-                speed_next <= speed_reg - 1;
+            if sp_up_d = '1' and sp_up_d_last = '0' then
+                if speed_reg < 4 then
+                    speed_reg <= speed_reg + 1;
+                end if;
+            elsif sp_dn_d = '1' and sp_dn_d_last = '0' then
+                if speed_reg > 0 then
+                    speed_reg <= speed_reg - 1;
+                end if;
             end if;
+
+            sp_up_d_last <= sp_up_d;
+            sp_dn_d_last <= sp_dn_d;
         end if;
     end process;
 

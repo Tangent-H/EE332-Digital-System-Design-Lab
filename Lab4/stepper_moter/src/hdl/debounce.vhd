@@ -17,23 +17,33 @@ end debounce;
 architecture rtl of debounce is
     signal sig_last, sig_stable : std_logic;
     signal cnt : integer range 0 to DELAY_PERIOD - 1;
+    signal rst_sync : std_logic := '0';
 begin
-    process(clk, rst)
+    -- Synchronize the reset signal with the clock
+    process(clk)
     begin
-        if rst = '1' then
+        if rising_edge(clk) then
+            rst_sync <= rst;
+        end if;
+    end process;
+
+    -- Debounce logic
+    process(clk, rst_sync)
+    begin
+        if rst_sync = '1' then
             sig_last <= '0';
             sig_stable <= '0';
             cnt <= 0;
         elsif rising_edge(clk) then
             if sig_in = sig_last then
-                cnt <= cnt + 1;
+                if cnt < DELAY_PERIOD - 1 then
+                    cnt <= cnt + 1;
+                else
+                    cnt <= 0;
+                    sig_stable <= sig_in;
+                end if;
             else
                 cnt <= 0;
-            end if;
-
-            if cnt = DELAY_PERIOD - 1 then
-                cnt <= 0;
-                sig_stable <= sig_last;
             end if;
 
             sig_last <= sig_in;

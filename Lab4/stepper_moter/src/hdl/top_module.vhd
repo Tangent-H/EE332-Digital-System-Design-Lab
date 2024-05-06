@@ -26,7 +26,7 @@ architecture rtl of top_module is
             rst : in std_logic;
             sp_up : in std_logic;
             sp_dn : in std_logic;
-            speed : out integer range 0 to 9
+            speed : out integer range 0 to 4
         );
     end component;
 

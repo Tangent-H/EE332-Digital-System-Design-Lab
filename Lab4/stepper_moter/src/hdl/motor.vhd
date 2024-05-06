@@ -23,7 +23,12 @@ architecture rtl of motor is
     signal period : integer range 0 to 1e9;
 begin
     -- period <= 146484375 / rpm / 100 when rpm > 0 else 0;
-    period <= 3e4 * speed;
+    period <= 4e5 when speed = 4 else
+            6e5 when speed = 3 else
+            8e5 when speed = 2 else
+            1e6 when speed = 1 else
+            15e5;
+            
     process(clk, rst)
     begin
         if rst = '1' then
